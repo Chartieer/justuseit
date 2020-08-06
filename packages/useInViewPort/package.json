@@ -1,5 +1,5 @@
 {
-  "name": "@justuseit/usewindow",
+  "name": "@justuseit/useinviewport",
   "version": "0.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -13,5 +13,7 @@
   "peerDependencies": {
     "react": "^16.13.1"
   },
-  "gitHead": "38cc4bf86c15f4a5b4ec269fdb7f0db7f0b0effd"
+  "dependencies": {
+    "intersection-observer": "^0.11.0"
+  }
 }

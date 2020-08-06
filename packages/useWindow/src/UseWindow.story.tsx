@@ -12,4 +12,4 @@ const Dummy = () => {
     </div>
   );
 };
-storiesOf('components/Usetimer', module).add('default', () => <Dummy />);
+storiesOf('Window/Usewindow', module).add('default', () => <Dummy />);
