@@ -11,7 +11,7 @@
     "build-components": "node ./scripts/build_components.js $npm_package_name",
     "prebuild": "run-p tsc lint",
     "build": "lerna exec --parallel 'BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --no-comments'",
-    "postbuild": "yarn build:declarations",
+    "postbuild": "node ./scripts/postbuild.js && yarn build:declarations",
     "build:styles": "node ./scripts/build_styles.js",
     "build:declarations": "lerna exec --parallel 'tsc --project ./tsconfig.build.json'",
     "generate": "plop --plopfile ./.plop/plop.config.js",
