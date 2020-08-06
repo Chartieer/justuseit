@@ -1,0 +1,24 @@
+import cx from 'classnames';
+import * as React from "react";
+import * as styles from "./{{ lowerCase name }}.scss";
+
+
+interface Props {
+  children?: React.ReactNode;
+}
+
+export const {{ properCase name }}: React.FC<Props> = ({
+  children,
+}) => {
+
+  const classes = cx(styles.base, {
+  [styles["container-fluid"]]: children,
+  [styles["container"]]: !children
+  });
+
+
+  return(
+  <div className={classes}>
+    {children}
+  </div>
+)};

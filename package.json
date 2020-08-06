@@ -1,0 +1,83 @@
+{
+  "name": "justdoit",
+  "version": "0.0.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "private": true,
+  "description": "React Hooks",
+  "scripts": {
+    "build-storybook": "build-storybook",
+    "build-components": "node ./scripts/build_components.js $npm_package_name",
+    "prebuild": "run-p tsc lint",
+    "build": "lerna exec --parallel 'BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --no-comments'",
+    "postbuild": "node ./scripts/build_styles.js && yarn build:declarations",
+    "build:styles": "node ./scripts/build_styles.js",
+    "build:declarations": "lerna exec --parallel 'tsc --project ./tsconfig.build.json'",
+    "generate": "plop --plopfile ./.plop/plop.config.js",
+    "commit": "git-cz",
+    "fix": "run-p -c 'lint:ts-* --fix'",
+    "lint:css": "stylelint 'packages/**/*.ts{,x}'",
+    "lint:ts-prod": "tslint --config tslint.prod.json 'packages/**/*.ts{,x}'",
+    "lint:ts-test": "tslint --config tslint.test.json 'packages/**/*.{test,story}.ts{,x}'",
+    "lint:ts": "run-p -c lint:ts-*",
+    "lint": "run-p -c lint:*",
+    "prerelease": "yarn build",
+    "release": "lerna publish",
+    "storybook": "start-storybook -p 8008",
+    "test": "jest --detectOpenHandles",
+    "tsc": "tsc --project ./tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "---@todo--"
+  },
+  "author": "Volker Chartier",
+  "license": "MIT",
+  "resolutions": {
+    "**/event-stream": "^4.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@storybook/react": "^5.3.19",
+    "@types/enzyme": "^3.9.1",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.12",
+    "@types/react": "^16.9.44",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.1.0",
+    "chalk": "^2.4.2",
+    "commander": "^2.20.0",
+    "commitizen": "^3.1.1",
+    "cz-lerna-changelog": "^2.0.3",
+    "glob": "^7.1.4",
+    "inquirer": "^6.4.0",
+    "jest": "^24.7.1",
+    "lerna": "^3.22.1",
+    "npm-run-all": "^4.1.5",
+    "plop": "^2.4.0",
+    "prettier": "2.0.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "semantic-release": "17.1.1",
+    "shelljs": "^0.8.3",
+    "ts-jest": "^24.0.2",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.3.0",
+    "typescript": "^3.9.7",
+    "webpack": "^4.44.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-lerna-changelog"
+    }
+  },
+  "dependencies": {
+    "recursive-copy": "^2.0.10"
+  }
+}

@@ -1,0 +1,10 @@
+import { mount } from 'enzyme';
+import * as React from 'react';
+
+import { {{ properCase name }} } from "./{{ properCase name }}";
+
+describe({{ properCase name }}, () => {
+  test('should match snapshot and styles for default props', () => {
+  expect(mount(<{{ properCase name }}>hello</{{ properCase name }}>)).toMatchSnapshot();
+  });
+});
