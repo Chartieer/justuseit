@@ -1,5 +1,5 @@
 {
-  "name": "@justuseit/{{ lowerCase name }}",
+  "name": "@justuseit/usetimer",
   "version": "0.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,6 +8,9 @@
     "access": "public"
   },
   "files": [
-      "dist"
-  ]
+    "dist"
+  ],
+  "peerDependencies": {
+    "react": "^16.13.1"
+  }
 }
