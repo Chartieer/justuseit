@@ -6,11 +6,9 @@ const useContrast = (cb: () => void) => {
   const ref = useRef(null);
 
   useEffect(() => {
-    let contrast = new Contrast();
+    const contrast = new Contrast();
 
     contrast.launch();
-
-    console.log(contrast);
 
     return () => {
       // on Remove

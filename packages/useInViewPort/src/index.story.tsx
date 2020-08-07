@@ -8,7 +8,7 @@ const Dummy = () => {
 
   return (
     <div>
-      <div ref={ref}>observer dom</div>
+      <div ref={ref}>IN VIEW?</div>
       <div style={{ marginTop: 1000, color: inViewPort ? '#87d068' : '#f50' }}>
         {inViewPort ? 'visible' : 'hidden'}
       </div>

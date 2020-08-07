@@ -70,11 +70,12 @@ class Contrast {
   // RETURNS A PROMISE
   loadImage() {
     // Let's create an image to draw from
-    let style = getComputedStyle(this.bgBlock);
+    const style = getComputedStyle(this.bgBlock);
     // Find css background-image property and check whether it has url wrapped
     // in "" or '' or without quotes, then extract it
-    if (style.backgroundImage.indexOf('url') != -1) {
-      let startOfString, endOfString;
+    if (style.backgroundImage.indexOf('url') !== -1) {
+      let startOfString;
+      let endOfString;
       if (
         style.backgroundImage.indexOf("'") > -1 ||
         style.backgroundImage.indexOf('"') > -1
@@ -87,9 +88,9 @@ class Contrast {
       }
       this.imgSrc = style.backgroundImage.slice(startOfString, endOfString);
     } else {
-      console.log(
-        "Check your element styles. Looks like you haven't set the background-image property correctly."
-      );
+      // console.log(
+      //   "Check your element styles. Looks like you haven't set the background-image property correctly."
+      // );
     }
     // Make sure the image is loaded before calling the next function
     return new Promise((resolve, reject) => {
@@ -104,9 +105,11 @@ class Contrast {
   // This function is used to assist with background-size:cover
   getCoverScaleFactor() {
     /* Get the ratio of the div + the image */
-    let imageRatio = this.imgEl.width / this.imgEl.height;
-    let coverRatio = this.bgBlock.offsetWidth / this.bgBlock.offsetHeight;
-    let coverHeight, coverWidth, scale;
+    const imageRatio = this.imgEl.width / this.imgEl.height;
+    const coverRatio = this.bgBlock.offsetWidth / this.bgBlock.offsetHeight;
+    let coverHeight;
+    let coverWidth;
+    let scale;
     /* Figure out which ratio is greater */
     if (imageRatio >= coverRatio) {
       coverHeight = this.bgBlock.offsetHeight;
@@ -126,11 +129,11 @@ class Contrast {
   getAverageHEX() {
     if (!this.context) {
       return defaultRGB;
-      console.log('CONTEXT UNDEFINED');
+      // console.log('CONTEXT UNDEFINED');
     }
 
     let revScale;
-    if (this.backgroundSize == 'cover') {
+    if (this.backgroundSize === 'cover') {
       // Call the function to get the current scale factor of the cover property
       revScale = this.getCoverScaleFactor();
       // Let's draw the area of the image behind the text (contentEL)
@@ -172,19 +175,24 @@ class Contrast {
       );
     } catch (e) {
       /* security error, img on diff domain */
-      console.log('Make sure the image is hosted on the same domain');
+
+      throw new Error('Make sure the image is hosted on the same domain');
+
       return this;
     }
 
-    this.length = this.data.data.length;
+    this.length = this.data!.data!.length;
 
-    let i = -4;
+    let i = 0;
     let count = 0;
-    while ((i += this.blockSize * 4) < this.length) {
+
+    while (i < this.length) {
       ++count;
       this.rgb.r += this.data.data[i];
       this.rgb.g += this.data.data[i + 1];
       this.rgb.b += this.data.data[i + 2];
+
+      i += this.blockSize * 4;
     }
 
     // ~~ used to floor values
@@ -214,16 +222,16 @@ class Contrast {
     if (this.hex.length !== 6) {
       throw new Error('Invalid HEX color.');
     }
-    let r = parseInt(this.hex.slice(0, 2), 16),
-      g = parseInt(this.hex.slice(2, 4), 16),
-      b = parseInt(this.hex.slice(4, 6), 16);
-    if (this.isCustomColors == true) {
+    let r = parseInt(this.hex.slice(0, 2), 16);
+    let g = parseInt(this.hex.slice(2, 4), 16);
+    let b = parseInt(this.hex.slice(4, 6), 16);
+    if (this.isCustomColors === true) {
       // http://stackoverflow.com/a/3943023/112731
-      if (r * 0.299 + g * 0.587 + b * 0.114 > 186) {
-        this.invertedHex = this.customDark;
-      } else {
-        this.invertedHex = this.customLight;
-      }
+      this.invertedHex =
+        r * 0.299 + g * 0.587 + b * 0.114 > 186
+          ? his.customDark
+          : this.customLight;
+
       return this;
     }
     // invert color components
@@ -238,7 +246,7 @@ class Contrast {
 
   padZero(str, len) {
     len = len || 2;
-    let zeros = new Array(len).join('0');
+    const zeros = new Array(len).join('0');
     return (zeros + str).slice(-len);
   }
 
@@ -263,22 +271,20 @@ class Contrast {
 
   // Add event listener
   resize() {
-    let self = this;
-    window.addEventListener('resize', function () {
-      self
-        .prepare()
+    window.addEventListener('resize', () => {
+      this.prepare()
         .loadImage()
         .then((image) => {
-          self.getAverageHEX().rgbToHex().invertColor().setElementColor();
+          this.getAverageHEX().rgbToHex().invertColor().setElementColor();
         });
     });
   }
   launch() {
-    let self = this;
+    // const self = this;
     this.prepare()
       .loadImage()
       .then((image) => {
-        self.getAverageHEX().rgbToHex().invertColor().setElementColor();
+        this.getAverageHEX().rgbToHex().invertColor().setElementColor();
       });
     if (this.isResponsive) {
       this.resize();

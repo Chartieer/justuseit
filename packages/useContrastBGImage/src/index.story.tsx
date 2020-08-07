@@ -14,10 +14,10 @@ const Dummy = () => {
       className="contrast-bg"
       style={{
         width: '100%',
-        height: '50vh',
+        height: '90vh',
         backgroundSize: 'cover',
         backgroundImage: `url(
-          'https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80'
+          'https://cdn.cnn.com/cnnnext/dam/assets/150827142602-01-skyline-quiz-chicago-1-jpg-super-169.jpg'
         )`
       }}
     >

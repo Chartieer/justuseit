@@ -40,7 +40,7 @@ function useInViewport(): [InViewport, React.MutableRefObject<any | null>] {
   useEffect(() => {
     const el = getTargetElement(ref);
     if (!el) {
-      return () => {};
+      return undefined;
     }
 
     const observer = new IntersectionObserver((entries) => {

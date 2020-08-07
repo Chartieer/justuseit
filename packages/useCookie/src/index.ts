@@ -32,13 +32,13 @@ export default function (key: string, initialValue: any) {
     return getCookie(key) || initialValue;
   });
 
-  const updateCookie = (value: any, options: object) => {
-    setCookieValue(JSON.stringify(value));
+  const updateCookie = (_value: any, options: object) => {
+    setCookieValue(JSON.stringify(_value));
     setCookie(key, value, options);
   };
 
   const deleteCookie = (path = '/') => {
-    updateCookie('', { days: -1, path: path });
+    updateCookie('', { days: -1, path });
     setCookieValue(null);
   };
 
