@@ -1,5 +1,5 @@
 {
-  "name": "@justuseit/usewatch",
+  "name": "@justuseit/usetoggle",
   "version": "0.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -7,7 +7,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "peerDependencies": {
+    "react": "^16.13.1"
+  },
   "files": [
-      "dist"
+    "dist"
   ]
 }

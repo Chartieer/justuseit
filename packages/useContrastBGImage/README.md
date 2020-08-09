@@ -3,6 +3,7 @@
 ## Just use it
 
 **Attention currently PoC**
+\*\* Remove ClassNames/
 
 ```javascript
 import useContrastBgImage from './index';
