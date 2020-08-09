@@ -30,18 +30,17 @@ const componentGenerator = {
       },
       {
         type: 'add',
-        path: '../packages/{{lowerCase name}}/src/index.ts',
-        templateFile: './index.ts.hbs',
+        path: '../packages/{{lowerCase name}}/README.md',
+        templateFile: './README.md',
         abortOnFail: true
       },
       {
         type: 'add',
-        path: '../packages/{{lowerCase name}}/src/{{properCase name}}.tsx',
-        templateFile: stateless
-          ? './componentName.sfc.tsx.hbs'
-          : './componentName.class.tsx.hbs',
+        path: '../packages/{{lowerCase name}}/src/index.ts',
+        templateFile: './index.ts.hbs',
         abortOnFail: true
       },
+
       // Jest Test
       {
         type: 'add',
@@ -57,22 +56,6 @@ const componentGenerator = {
         templateFile: './componentName.story.tsx.hbs',
         abortOnFail: true
       },
-
-      // Styles
-      {
-        type: 'add',
-        path: '../packages/{{lowerCase name}}/src/{{lowerCase name}}.scss',
-        templateFile: './componentName.scss.hbs',
-        abortOnFail: true
-      },
-
-      {
-        type: 'add',
-        path: '../packages/{{lowerCase name}}/src/index.scss',
-        templateFile: './index.scss.hbs',
-        abortOnFail: true
-      },
-
       {
         type: 'add',
         path: '../packages/{{lowerCase name}}/tsconfig.build.json',

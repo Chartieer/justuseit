@@ -4,6 +4,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
+  "keywords": ["react", "hooks", "ui", "fokker"],
   "publishConfig": {
     "access": "public"
   },
