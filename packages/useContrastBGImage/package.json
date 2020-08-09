@@ -1,10 +1,15 @@
 {
   "name": "@justuseit/useconstrastbg",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
-  "keywords": ["react", "hooks", "ui", "fokker"],
+  "keywords": [
+    "react",
+    "hooks",
+    "ui",
+    "fokker"
+  ],
   "publishConfig": {
     "access": "public"
   },
